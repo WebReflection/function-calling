@@ -44,8 +44,8 @@ var slice = [].slice.calling(
   // that should be used per each call
   [2],
   // we can force the resulting function
-  // to accept any arbitrary amount of
-  // extra arguments
+  // to NOT accept any arbitrary amount of
+  // extra arguments (blocked amount of args)
   true
 );
 
@@ -93,13 +93,15 @@ var ten = parseInt.calling(
   ]
   // no need to block arguments
   // parseInt accepts only 2 args in any case
+  // however, if we are sure we are good
+  // blocking arguments will speed up execution!
 );
 
 ten('08') === 8; // true
 ten('08', 2) === 8; // true
 ten('08', 8) === 8; // true
 ten('08', 16) === 8; // true
-ten('0a', 16) === 1; // true
+ten('0a', 16) === 0; // true
 
 // similar bind behavior
 // (example only since you might just use bind here)
@@ -108,5 +110,9 @@ args(); // slice.call(arguments)
 args(1); // slice.call(arguments, 1)
 args(1, 2); // slice.call(arguments, 1, 2)
 
-
+// with blocked signature, no second arg
+var args = [].slice.calling(arguments, [null], true);
+args(); // slice.call(arguments)
+args(1); // slice.call(arguments, 1)
+args(1, 2); // **still** slice.call(arguments, 1)
 ```
