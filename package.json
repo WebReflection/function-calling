@@ -1,0 +1,22 @@
+{
+  "version": "0.0.0",
+  "name": "function-calling",
+  "description": "",
+  "homepage": "https://github.com/WebReflection/function-calling",
+  "keywords": [],
+  "author": {
+    "name": "",
+    "web": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/WebReflection/function-calling.git"
+  },
+  "main": "./build/function-calling.node.js",
+  "scripts": {
+    "test": "node test/.test.js"
+  },
+  "dependencies": {
+    "wru": ">= 0.0.0"
+  }
+}
