@@ -24,7 +24,6 @@ THE SOFTWARE.
 /**
  * Whenever some "guru" tells you something is evil,
  * remember that Lucifer is a fallen angel too.
- * Learn what to trust and stop listening to dogmas!
  */
 (function(evil, calling, proto, undef) {
   'use strict';
@@ -51,7 +50,7 @@ THE SOFTWARE.
     if (allOfThem) {
       $arguments[0] = '[' + $arguments[0];
       $arguments[length - 1] += (
-        '].concat(Array.prototype.slice.call(arguments,' + length + '))'
+        '].concat(Array.prototype.slice.call(arguments,' + j + '))'
       );
     }
     return evil(

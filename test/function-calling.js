@@ -18,9 +18,9 @@ wru.test([
       wru.async(function(a){
         wru.assert('right args', this === o && a === 1);
       }.calling(o, [1]))();
-      wru.async(function(a, b){
-        wru.assert('right multiple args', this === o && a === 1 && b === 2);
-      }.calling(o, [1, 2]))();
+      wru.async(function(a, b, c){
+        wru.assert('right multiple args', this === o && a === 1 && b === 2 && c === 3);
+      }.calling(o, [1, null, 3]))(2);
     }
   },{
     name: 'limiting arguments',
@@ -34,10 +34,11 @@ wru.test([
     name: 'not limiting arguments',
     test: function () {
       var pInt = parseInt.calling(undefined, [null], true),
+          // just as example since String.fromCharCode accepts already N chars
           fromCharCode  = String.fromCharCode.calling(String, [], true),
-          charCodeAt    = String.prototype.charCodeAt.calling(null, [0]);
+          charCodeAtZero= String.prototype.charCodeAt.calling(null, [0]);
       wru.log('second argument cnsidered', pInt('0a', 16) === 10);
-      wru.log('generic function', fromCharCode(1, 2, 3) === [1, 2, 3].map(charCodeAt).join(''));
+      wru.log('generic function', fromCharCode(1, 2, 3) === [1, 2, 3].map(charCodeAtZero).join(''));
     }
   },{
     name: 'hybrid',
@@ -46,7 +47,15 @@ wru.test([
         '',
         [1, null, 2, undefined, 3, null, 4]
       );
-      wru.assert('it works!', ['192','384'].join('' + undefined) === hybrid(9, 8));
+      wru.assert('partial no extras', ['192','384'].join('' + undefined) === hybrid(9, 8, 7));
+      hybrid = ''.concat.calling(
+        '',
+        [1, null, 2, undefined, 3, null, 4],
+        true
+      );
+      wru.log('' + hybrid);
+      wru.log(hybrid(9, 8, 7));
+      wru.assert('partial with extras', ['192','3847'].join('' + undefined) === hybrid(9, 8, 7));
     }
   }
 ]);
