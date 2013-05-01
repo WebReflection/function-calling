@@ -8,9 +8,10 @@
   if (evil[proto][calling]) {
     return;
   }
-  evil[proto][calling] = function (context, args, allOfThem) {
+  evil[proto][calling] = function (context, args, blockOthers) {
     var
       NULL = 'null',
+      allOfThem = !blockOthers,
       $arguments = [],
       length = (args || $arguments).length,
       i = 0,

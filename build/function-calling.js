@@ -2,4 +2,4 @@
 /*jslint plusplus: true, indent: 2 *//**
  * Whenever some "guru" tells you something is evil,
  * remember that Lucifer is a fallen angel too.
- */(function(e,t,n,r){"use strict";if(e[n][t])return;e[n][t]=function(t,n,i){var s="null",o=[],u=(n||o).length,a=0,f=0;while(a<u)n[a]===r?o[a]=typeof r:n[a]===null?o[a]="arguments["+f++ +"]":o[a]="a["+a+"]",a++;return i&&(o[0]="["+o[0],o[u-1]+="].concat(Array.prototype.slice.call(arguments,"+f+"))"),e("f,a,c",["return function ",this.name||"","(){return f.",i?"apply":"call","(",t===r?s:t===null?"this":"c",u?",":"",u?o.join(","):",[]",")}"].join(""))(this,n,t)}})(Function,"calling","prototype");
+ */(function(e,t,n,r){"use strict";if(e[n][t])return;e[n][t]=function(t,n,i){var s="null",o=!i,u=[],a=(n||u).length,f=0,l=0;while(f<a)n[f]===r?u[f]=typeof r:n[f]===null?u[f]="arguments["+l++ +"]":u[f]="a["+f+"]",f++;return o&&(u[0]="["+u[0],u[a-1]+="].concat(Array.prototype.slice.call(arguments,"+l+"))"),e("f,a,c",["return function ",this.name||"","(){return f.",o?"apply":"call","(",t===r?s:t===null?"this":"c",a?",":"",a?u.join(","):",[]",")}"].join(""))(this,n,t)}})(Function,"calling","prototype");
