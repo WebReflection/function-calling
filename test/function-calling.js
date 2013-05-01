@@ -42,11 +42,11 @@ wru.test([
   },{
     name: 'hybrid',
     test: function () {
-      var hybrid = [].join.calling(
-        null,
-        ['1', null, '2', undefined, '3', null, '4']
+      var hybrid = ''.concat.calling(
+        '',
+        [1, null, 2, undefined, 3, null, 4]
       );
-      wru.log('' + hybrid)
+      wru.assert('it works!', ['192','384'].join('' + undefined) === hybrid(9, 8));
     }
   }
 ]);
